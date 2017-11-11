@@ -9,8 +9,12 @@
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-feather": "^1.0.7",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
+    "redux": "^3.7.2",
+    "redux-immutable-state-invariant": "^2.1.0",
+    "redux-thunk": "^2.2.0",
     "shortid": "^2.2.8"
   },
   "scripts": {
@@ -25,8 +29,7 @@
     "electron": "electron .",
     "react-start": "BROWSER=none react-scripts start",
     "electron-start": "ELECTRON_DEV=1 electron .",
-    "start":
-      "concurrently 'yarn run react-start' 'yarn run wait-on http://localhost:3000/ && yarn run electron-start'"
+    "start": "concurrently 'yarn run react-start' 'yarn run wait-on http://localhost:3000/ && yarn run electron-start'"
   },
   "homepage": "./",
   "devDependencies": {
@@ -43,6 +46,9 @@
     "wait-on": "^2.0.2"
   },
   "lint-staged": {
-    "*.{js,jsx}": ["prettier --write --trailing-comma all", "git add"]
+    "*.{js,jsx}": [
+      "prettier --write --trailing-comma all",
+      "git add"
+    ]
   }
 }
