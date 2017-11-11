@@ -1,0 +1,44 @@
+{
+  "name": "scrapbook-app",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/electron-starter.js",
+  "dependencies": {
+    "electron": "^1.7.9",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "precommit": "lint:staged",
+    "lint": "eslint src --ext .js --ext .jsx --cache --ignore-path .gitignore",
+    "lint:force": "eslint src --ext .js --ext .jsx --ignore-path .gitignore",
+    "lint-staged": "lint-staged",
+    "format": "prettier --write --trailing-comma all src/**/*.{js,jsx}",
+    "electron": "electron .",
+    "react-start": "BROWSER=none react-scripts start",
+    "electron-start": "ELECTRON_DEV=1 electron .",
+    "start":
+      "concurrently 'yarn run react-start' 'yarn run wait-on http://localhost:3000/ && yarn run electron-start'"
+  },
+  "homepage": "./",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^5.0.0",
+    "prettier": "^1.8.2",
+    "wait-on": "^2.0.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": ["prettier --write --trailing-comma all", "git add"]
+  }
+}
