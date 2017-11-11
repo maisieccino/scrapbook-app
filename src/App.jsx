@@ -1,17 +1,31 @@
 import React from "react";
-import logo from "./logo.svg";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { generate } from "shortid";
 import "./App.css";
 
+import routes from "./routes";
+
+import Navigation from "./components/Navigation";
+
 const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1 className="App-title">Welcome to React</h1>
-    </header>
-    <p className="App-intro">
-      To get started, edit <code>src/App.js</code> and save to reload.
-    </p>
-  </div>
+  <BrowserRouter>
+    <div className="App">
+      <article>
+        <Switch>
+          {/* generate our routes from the shared routes array */}
+          {routes.map(({ component, path, ...rest }) => (
+            <Route
+              path={path}
+              component={component}
+              key={generate()}
+              {...rest}
+            />
+          ))}
+        </Switch>
+      </article>
+      <Navigation routes={routes} />
+    </div>
+  </BrowserRouter>
 );
 
 export default App;

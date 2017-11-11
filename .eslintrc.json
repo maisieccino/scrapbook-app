@@ -11,5 +11,24 @@
     }
   },
   "plugins": ["react", "jsx-a11y", "import"],
-  "globals": {}
+  "globals": {},
+  "rules": {
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      // jest files
+      "files": ["src/**/*.test.{js,jsx}"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }

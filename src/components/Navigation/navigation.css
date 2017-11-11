@@ -1,0 +1,9 @@
+nav.navbar {
+  box-sizing: border-box;
+  background-color: #ddd;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+}

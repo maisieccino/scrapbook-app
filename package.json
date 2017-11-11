@@ -5,18 +5,22 @@
   "main": "src/electron-starter.js",
   "dependencies": {
     "electron": "^1.7.9",
+    "prop-types": "^15.6.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "react-scripts": "1.0.17"
+    "react-feather": "^1.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "shortid": "^2.2.8"
   },
   "scripts": {
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "lint:staged",
+    "precommit": "yarn run lint:staged",
     "lint": "eslint src --ext .js --ext .jsx --cache --ignore-path .gitignore",
     "lint:force": "eslint src --ext .js --ext .jsx --ignore-path .gitignore",
-    "lint-staged": "lint-staged",
+    "lint:staged": "lint-staged",
     "format": "prettier --write --trailing-comma all src/**/*.{js,jsx}",
     "electron": "electron .",
     "react-start": "BROWSER=none react-scripts start",
