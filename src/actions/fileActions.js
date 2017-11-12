@@ -49,3 +49,24 @@ export const loadFile = pathname => async dispatch => {
     );
   }
 };
+
+export const createFile = (pathname, data) => async dispatch => {
+  await dispatch(setIsSavingFile());
+  // TODO: add system to take data and save it
+  try {
+    await new Promise((res, rej) =>
+      fs.writeFile(pathname, JSON.stringify(data), error => {
+        if (error) {
+          rej(error);
+        }
+        res();
+      }),
+    );
+    await dispatch(saveFileSuccess());
+    return dispatch(loadFileSuccess(pathname));
+  } catch (error) {
+    return dispatch(
+      saveFileFailure(typeof error === "string" ? error : error.message),
+    );
+  }
+};

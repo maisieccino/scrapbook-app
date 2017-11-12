@@ -3,19 +3,23 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import * as Icon from "react-feather";
 import Page from "../components/layout/Page";
-import { loadFile } from "../actions/fileActions";
+import { createFile, loadFile } from "../actions/fileActions";
 
 const remote = window.require("electron").remote; // eslint-disable-line prefer-destructuring
 const dialog = remote.dialog; // eslint-disable-line prefer-destructuring
 
 class Index extends Component {
+  static fileFilters = [{ name: "JSON File", extensions: ["json"] }];
+
   static propTypes = {
     loadFile: PropTypes.func,
+    createFile: PropTypes.func,
     isLoadingFile: PropTypes.bool,
   };
 
   static defaultProps = {
     loadFile: () => {},
+    createFile: () => {},
     isLoadingFile: false,
   };
 
@@ -25,21 +29,25 @@ class Index extends Component {
 
   static mapDispatchToProps = dispatch => ({
     loadFile: pathname => dispatch(loadFile(pathname)),
+    createFile: pathname => dispatch(createFile(pathname)),
   });
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      isCreating: false,
-    };
-  }
 
   onOpenFileClick() {
     const filepath = dialog.showOpenDialog({
-      filters: [{ name: "JSON File", extensions: ["json"] }],
+      filters: Index.fileFilters,
     });
     if (filepath) {
       this.props.loadFile(filepath[0]);
+    }
+  }
+
+  onNewFileClick() {
+    const filepath = dialog.showSaveDialog({
+      title: "Location of new bookmarks file",
+      filters: Index.fileFilters,
+    });
+    if (filepath) {
+      this.props.createFile(filepath);
     }
   }
 
@@ -47,27 +55,25 @@ class Index extends Component {
     return (
       <div className="App">
         <article>
-          {this.state.isCreating ? (
-            <Page title="Create new store">yada yada</Page>
-          ) : (
-            <Page className="home" title="Scrapbook">
-              <h2>Bookmarks manager.</h2>
-              <p>Open a file:</p>
+          <Page className="home" title="Scrapbook">
+            <h2>Bookmarks manager.</h2>
+            <p>Open a file:</p>
+            <p>
+              <button onClick={() => this.onOpenFileClick()}>
+                Open file...
+              </button>
+            </p>
+            <p>
+              <button onClick={() => this.onNewFileClick()}>
+                Create new file...
+              </button>
+            </p>
+            {this.props.isLoadingFile && (
               <p>
-                <button onClick={() => this.onOpenFileClick()}>
-                  Open file...
-                </button>
+                <Icon.RefreshCw />
               </p>
-              {this.props.isLoadingFile && (
-                <p>
-                  <Icon.RefreshCw />
-                </p>
-              )}
-              <p>
-                <button>Create new file</button>
-              </p>
-            </Page>
-          )}
+            )}
+          </Page>
         </article>
       </div>
     );
