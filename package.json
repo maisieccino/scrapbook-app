@@ -5,6 +5,7 @@
   "main": "src/electron-starter.js",
   "dependencies": {
     "electron": "^1.7.9",
+    "moment": "^2.19.2",
     "prop-types": "^15.6.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",

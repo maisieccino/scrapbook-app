@@ -37,6 +37,7 @@ a.button {
   width: 100%;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
+  font-family: inherit;
 }
 
 button:hover,

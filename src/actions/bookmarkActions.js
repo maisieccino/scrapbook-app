@@ -15,8 +15,8 @@ export const addBookmark = bookmark => {
   return {
     type: constants.ADD_BOOKMARK,
     bookmark: {
+      dateAdded: `${Date.now()}`,
       ...bookmark,
-      timeAdded: Date.now(),
       key,
     },
   };
