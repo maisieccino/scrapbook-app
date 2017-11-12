@@ -1,7 +1,7 @@
 import React from "react";
 import * as Icon from "react-feather";
 
-import { Home, Settings, Starred, Tags } from "./containers";
+import { BookmarkView, Home, Settings, Starred, Tags } from "./containers";
 
 export default [
   {
@@ -35,5 +35,9 @@ export default [
     label: "Settings",
     navigation: true,
     icon: <Icon.Settings />,
+  },
+  {
+    path: "/bookmark/:key",
+    render: (...props) => <BookmarkView {...props} />,
   },
 ];

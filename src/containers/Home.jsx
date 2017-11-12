@@ -60,8 +60,6 @@ class Home extends Component {
       this.props.bookmarks.length &&
       nextProps.bookmarks.length !== this.props.bookmarks.length
     ) {
-      console.log("saving...");
-      console.log(nextProps.bookmarkData);
       this.props.saveFile(this.props.pathname, nextProps.bookmarkData);
     }
   }
@@ -69,12 +67,18 @@ class Home extends Component {
   render() {
     const { bookmarks } = this.props;
     return (
-      <Page className="home" title="Your Bookmarks">
+      <Page className="home" title="Recently Added">
         <CardStack>
           {bookmarks.length ? (
-            bookmarks.map(bookmark => (
-              <BookmarkCard key={generate()} {...bookmark} />
-            ))
+            bookmarks
+              .sort((a, b) => b.dateAdded - a.dateAdded)
+              .map(bookmark => (
+                <BookmarkCard
+                  key={generate()}
+                  bookmarkKey={bookmark.key}
+                  {...bookmark}
+                />
+              ))
           ) : (
             <h3>You have no bookmarks yet. Why not add some?</h3>
           )}

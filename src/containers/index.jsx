@@ -57,15 +57,15 @@ class Index extends Component {
         <article>
           <Page className="home" title="Scrapbook">
             <h2>Bookmarks manager.</h2>
-            <p>Open a file:</p>
+            <span className="flex-grow" />
             <p>
               <button onClick={() => this.onOpenFileClick()}>
-                Open file...
+                Open existing file
               </button>
             </p>
             <p>
               <button onClick={() => this.onNewFileClick()}>
-                Create new file...
+                Create new file
               </button>
             </p>
             {this.props.isLoadingFile && (
@@ -82,6 +82,7 @@ class Index extends Component {
 
 export default connect(Index.mapStateToProps, Index.mapDispatchToProps)(Index);
 
+export { default as BookmarkView } from "./BookmarkView";
 export { default as Home } from "./Home";
 export { default as Settings } from "./Settings";
 export { default as Starred } from "./Starred";
