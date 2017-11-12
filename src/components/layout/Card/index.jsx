@@ -21,3 +21,4 @@ Card.defaultProps = {
 };
 
 export default Card;
+export { default as BookmarkCard } from "./BookmarkCard";

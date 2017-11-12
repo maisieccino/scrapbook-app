@@ -1,4 +1,5 @@
 import * as constants from "../constants/fileConstants";
+import { addBookmarks } from "./bookmarkActions";
 
 const fs = window.require("fs");
 
@@ -42,6 +43,12 @@ export const loadFile = pathname => async dispatch => {
       }),
     );
     const data = JSON.parse(raw);
+    if (typeof data.bookmarks === "object") {
+      const bookmarks = Object.keys(data.bookmarks).map(
+        key => data.bookmarks[key],
+      );
+      await dispatch(addBookmarks(bookmarks));
+    }
     return dispatch(loadFileSuccess(pathname));
   } catch (error) {
     return dispatch(
@@ -50,9 +57,13 @@ export const loadFile = pathname => async dispatch => {
   }
 };
 
-export const createFile = (pathname, data) => async dispatch => {
+export const createFile = pathname => async dispatch => {
+  const data = {
+    bookmarks: {},
+    tags: {},
+    stars: {},
+  };
   await dispatch(setIsSavingFile());
-  // TODO: add system to take data and save it
   try {
     await new Promise((res, rej) =>
       fs.writeFile(pathname, JSON.stringify(data), error => {
