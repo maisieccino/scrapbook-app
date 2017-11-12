@@ -6,6 +6,8 @@ import { initialStates } from "./reducers";
 import "./index.css";
 import App from "./App";
 
+require("./server/index");
+
 const store = configureStore(Object.assign({}, initialStates));
 
 ReactDOM.render(
