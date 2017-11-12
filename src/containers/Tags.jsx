@@ -1,9 +1,10 @@
 import React from "react";
+import Page from "../components/layout/Page";
 
 const Tags = () => (
-  <div>
-    <h1>Your Tags</h1>
-  </div>
+  <Page title="Your Tags">
+    <h1>List of tags</h1>
+  </Page>
 );
 
 export default Tags;

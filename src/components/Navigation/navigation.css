@@ -1,6 +1,6 @@
 nav.navbar {
   box-sizing: border-box;
-  background-color: #ddd;
+  background-color: white;
   height: 5rem;
   display: flex;
   flex-direction: row;

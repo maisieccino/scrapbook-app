@@ -1,0 +1,13 @@
+.card {
+  width: 100%;
+  min-height: 7rem;
+  background-color: white;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 3px 5px black;
+  box-sizing: border-box;
+}
+
+.card h1 {
+  margin: 0.5rem 0;
+}

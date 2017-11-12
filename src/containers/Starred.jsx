@@ -1,9 +1,10 @@
 import React from "react";
+import Page from "../components/layout/Page";
 
 const Starred = () => (
-  <div>
-    <h1>Starred Pages</h1>
-  </div>
+  <Page title="Starred Links">
+    <h1>Starred</h1>
+  </Page>
 );
 
 export default Starred;

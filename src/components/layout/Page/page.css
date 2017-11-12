@@ -1,0 +1,22 @@
+.page {
+  box-sizing: border-box;
+  min-height: 100%;
+  overflow: hidden;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .page {
+    padding: 0 calc(calc(100% - 800px) / 2);
+  }
+}
+
+.page.home {
+  background: var(--gradient);
+}
+
+h1.title {
+  font-size: 3rem;
+  margin: 1rem 0;
+}

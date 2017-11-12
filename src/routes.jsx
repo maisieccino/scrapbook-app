@@ -1,11 +1,7 @@
 import React from "react";
 import * as Icon from "react-feather";
 
-import Home from "./containers/Home";
-import Starred from "./containers/Starred";
-import Tags from "./containers/Tags";
-import Settings from "./containers/Settings";
-import OpenFile from "./containers/OpenFile";
+import { Home, Settings, Starred, Tags } from "./containers";
 
 export default [
   {
@@ -39,10 +35,5 @@ export default [
     label: "Settings",
     navigation: true,
     icon: <Icon.Settings />,
-  },
-  {
-    path: "/openFile",
-    exact: true,
-    component: OpenFile,
   },
 ];

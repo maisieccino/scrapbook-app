@@ -1,5 +1,11 @@
 import { combineReducers } from "redux";
 
-export const initialStates = {};
+import fileReducer, { initialState as fileState } from "./fileReducer";
 
-export default combineReducers({});
+export const initialStates = {
+  file: fileState,
+};
+
+export default combineReducers({
+  file: fileReducer,
+});
