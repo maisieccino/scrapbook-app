@@ -3,6 +3,7 @@
 :root {
   --color-primary: #36d1dc;
   --color-secondary: #5b86e5;
+  --color-white: #eeeeee;
   --gradient: linear-gradient(
     45deg,
     var(--color-primary),

@@ -81,3 +81,22 @@ export const createFile = pathname => async dispatch => {
     );
   }
 };
+
+export const saveFile = (pathname, data) => async dispatch => {
+  await dispatch(setIsSavingFile());
+  try {
+    await new Promise((res, rej) =>
+      fs.writeFile(pathname, JSON.stringify(data), error => {
+        if (error) {
+          rej(error);
+        }
+        res();
+      }),
+    );
+    return dispatch(saveFileSuccess());
+  } catch (error) {
+    return dispatch(
+      saveFileFailure(typeof error === "string" ? error : error.message),
+    );
+  }
+};

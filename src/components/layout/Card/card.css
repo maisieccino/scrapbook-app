@@ -3,9 +3,23 @@
   min-height: 7rem;
   background-color: white;
   padding: 0.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   box-shadow: 0 3px 5px black;
   box-sizing: border-box;
+  color: black;
+  border-radius: 1rem;
+}
+
+.card button,
+.card a.button {
+  color: black;
+  border-color: black;
+}
+
+.card button:hover,
+.card a.button:hover {
+  background-color: black;
+  color: var(--color-white);
 }
 
 .card h1 {

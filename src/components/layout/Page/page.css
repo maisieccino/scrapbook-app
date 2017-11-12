@@ -14,9 +14,33 @@
 
 .page.home {
   background: var(--gradient);
+  color: var(--color-white);
 }
 
 h1.title {
   font-size: 3rem;
   margin: 1rem 0;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+button,
+a.button {
+  border: 0.1rem solid var(--color-white);
+  color: var(--color-white);
+  background-color: transparent;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  font-size: 1.8rem;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+button:hover,
+a.button:hover {
+  color: var(--color-secondary);
+  background-color: var(--color-white);
 }
